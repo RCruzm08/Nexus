@@ -24,7 +24,6 @@
 
 ## 🖥️ Interface do Projeto
 
-<img width="100%" src="https://i.imgur.com/8Km9tLL.png">
 
 </div>
 
@@ -129,7 +128,6 @@ O Nexus foi criado com o objetivo de:
 
 | Home | Interface |
 |---|---|
-| <img width="100%" src="https://i.imgur.com/8Km9tLL.png"> | <img width="100%" src="https://i.imgur.com/6q6qQ0Q.png"> |
 
 </div>
 
