@@ -1,0 +1,179 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.login-wrap {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.logo {
+    font-family: var(--font-hud);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.45em;
+    background: linear-gradient(135deg, var(--cyan), var(--magenta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(0,245,255,0.55));
+    animation: slideIn 0.8s ease both;
+}
+
+.logo-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: var(--text-dim);
+    margin-top: 6px;
+    animation: slideIn 0.8s 0.15s ease both;
+}
+
+.panel {
+    width: min(440px, 92vw);
+    margin-top: 48px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    padding: 44px 36px;
+    position: relative;
+    animation: slideIn 0.9s 0.3s ease both;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
+    background-size: 200% 100%;
+    animation: borderFlow 3s linear infinite;
+}
+
+.panel-title {
+    font-family: var(--font-hud);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.panel-title span { color: var(--magenta); }
+
+.field {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.field label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+
+.field input {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(0,245,255,0.04);
+    border: 1px solid rgba(0,245,255,0.18);
+    color: var(--cyan);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+.field input:focus {
+    border-color: var(--cyan);
+    background: rgba(0,245,255,0.08);
+    box-shadow: var(--glow);
+}
+
+.field input::placeholder { color: var(--text-faint); }
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    margin-top: 6px;
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-family: var(--font-hud);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(0,245,255,0.12), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+}
+
+.btn-login:hover::before { transform: translateX(100%); }
+
+.btn-login:hover {
+    background: rgba(0,245,255,0.08);
+    box-shadow: var(--glow);
+}
+
+.error-msg {
+    color: var(--magenta);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-align: center;
+    padding: 10px;
+    margin-top: 16px;
+    border: 1px solid rgba(255,0,110,0.3);
+    background: rgba(255,0,110,0.05);
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: none; }
+    25%       { transform: translateX(-5px); }
+    75%       { transform: translateX(5px); }
+}
+
+.demo-hint {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border2);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    text-align: center;
+}
+
+.demo-hint span { color: var(--yellow); }
+
+.status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 7px 24px;
+    background: rgba(0,245,255,0.03);
+    border-top: 1px solid var(--border2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: var(--text-faint);
+    z-index: 10;
+}

@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;500;700&display=swap');
+
+:root {
+    --cyan:      #00f5ff;
+    --magenta:   #ff006e;
+    --yellow:    #ffe600;
+    --purple:    #a855f7;
+    --green:     #00ff88;
+    --dark:      #020408;
+    --dark2:     #060d14;
+    --panel:     rgba(0, 245, 255, 0.04);
+    --panel2:    rgba(0, 245, 255, 0.07);
+    --border:    rgba(0, 245, 255, 0.15);
+    --border2:   rgba(0, 245, 255, 0.08);
+    --glow:      0 0 20px rgba(0, 245, 255, 0.35);
+    --glow-mg:   0 0 20px rgba(255, 0, 110, 0.35);
+    --text-dim:  rgba(0, 245, 255, 0.45);
+    --text-faint:rgba(0, 245, 255, 0.25);
+    --font-hud:  'Orbitron', monospace;
+    --font-mono: 'Share Tech Mono', monospace;
+    --font-ui:   'Rajdhani', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background: var(--dark);
+    color: var(--cyan);
+    font-family: var(--font-mono);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,245,255,0.3); border-radius: 2px; }
+
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridScroll 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.scanline {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.12) 2px,
+        rgba(0,0,0,0.12) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.corner {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    z-index: 10;
+    pointer-events: none;
+}
+.corner::before,
+.corner::after {
+    content: '';
+    position: absolute;
+    background: var(--cyan);
+    opacity: 0.6;
+}
+.corner::before { width: 2px; height: 100%; }
+.corner::after  { width: 100%; height: 2px; }
+.corner.tl { top: 16px; left: 16px; }
+.corner.tr { top: 16px; right: 16px; transform: scaleX(-1); }
+.corner.bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+.corner.br { bottom: 16px; right: 16px; transform: scale(-1); }
+
+.particle {
+    position: fixed;
+    border-radius: 50%;
+    background: var(--cyan);
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear infinite;
+    opacity: 0;
+}
+
+@keyframes gridScroll {
+    to { background-position: 40px 40px; }
+}
+
+@keyframes floatUp {
+    0%   { transform: translateY(100vh); opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.2; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.15; }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: var(--glow); }
+    50%       { box-shadow: 0 0 40px rgba(0,245,255,0.6); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes borderFlow {
+    0%   { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+}
+
+.status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    margin-right: 6px;
+    animation: blink 1.5s ease infinite;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    border: 1px solid;
+    font-family: var(--font-hud);
+}
+.tag.active   { color: var(--green);   border-color: rgba(0,255,136,0.4);   background: rgba(0,255,136,0.05); }
+.tag.installed{ color: var(--cyan);    border-color: rgba(0,245,255,0.3);   background: rgba(0,245,255,0.05); }
+.tag.wishlist { color: var(--yellow);  border-color: rgba(255,230,0,0.4);   background: rgba(255,230,0,0.05); }
+.tag.online   { color: var(--green);   border-color: rgba(0,255,136,0.4);   background: rgba(0,255,136,0.05); }
