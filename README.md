@@ -8,10 +8,7 @@
 
 <br>
 
-<img src="https://img.shields.io/github/stars/RCruzm08/Nexus?style=for-the-badge&color=8b5cf6">
-<img src="https://img.shields.io/github/forks/RCruzm08/Nexus?style=for-the-badge&color=6366f1">
-<img src="https://img.shields.io/github/license/RCruzm08/Nexus?style=for-the-badge&color=0ea5e9">
-<img src="https://img.shields.io/github/repo-size/RCruzm08/Nexus?style=for-the-badge&color=22c55e">
+
 
 <br><br>
 
